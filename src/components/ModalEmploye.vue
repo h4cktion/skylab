@@ -7,37 +7,50 @@
         <h2>{{title}}</h2>
       </header>
       <div class="w3-container">
-       <input type="text" v-model="employe.name" />
-       <input type="text" v-model="employe.age"/>
-       <input type="text" v-model="employe.salaire"/>
+       <input type="text" id='name' :value="name"  @input="inputChange"/>
+       <input type="text" id='age' :value="age"  @input="inputChange"/>
+       <input type="text" id='salary' :value="salary"  @input="inputChange"/>
       </div>
-      
+      {{name}},
+      {{age}},
+      {{salary}}
     </div>
   </div>
 </template>
 
 <script>
-  //import { mapState } from 'vuex';
+  import { mapState } from 'vuex';
   export default {
     data : ()=>{
       return {
-        employe : {
+
           name : "",
           age : 18,
-          salaire : 1200
-        }
+          salary : 1200
         }
     },
-    props: ['title', 'employeToUpdate'],
-    computed:{
-      fillEmploye(){
-        console.log("title : ",this.title)
-        console.log("employe : ",this.employeToUpdate)
-        return this.employeToUpdate
+     computed: {
+      ...mapState('employees', ['employees'] )
+    },
+    props: ['title', 'IdToUpdate'],
+    watch: { 
+      IdToUpdate: function(id) { 
+        if(id !== null){
+          let idEmployeToUpdate = this.employees.filter(e => e.id === id)[0];
+          this.name = idEmployeToUpdate.employee_name;
+          this.age = idEmployeToUpdate.employee_age;
+          this.salary = idEmployeToUpdate.employee_salary;
+        }else{
+          this.name = "";
+          this.age = 18;
+          this.salary = 1350;
+        }
       }
     },
     methods: {
-      
+      inputChange(event){
+        this[event.target.id] = event.target.value;
+      },
       save(){
          console.log(`add employe`)
       },

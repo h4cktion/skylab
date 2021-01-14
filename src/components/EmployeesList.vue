@@ -32,7 +32,7 @@
           
       </div>
     </div>
-    <ModalEmploye v-bind:title="modalTitle" v-bind:employeToUpdate="employeToUpdate"/>
+    <ModalEmploye v-bind:title="modalTitle" v-bind:IdToUpdate="idEmployeToUpdate"/>
   </div>
 </template>
 
@@ -43,7 +43,7 @@
     data: ()=>{
       return {
         modalTitle : "",
-        employeToUpdate : null
+        idEmployeToUpdate : null
       }
     },
     components: {
@@ -60,16 +60,14 @@
          this.$store.dispatch('employees/deleteEmployee',employe)
       },
       update(employe){
-        this.employeToUpdate = employe;
+        this.idEmployeToUpdate = employe.id;
         this.showModal("Modifier un employé")
-         console.log(`Update ${employe.id} ${employe.employee_name} `)
       },
       addEmploye(){
-        console.log(`add employe`)
+        this.idEmployeToUpdate = null
         this.showModal("Ajouter un employé")
       },
       showModal(title){
-        this.employeToUpdate = null;
         this.modalTitle = title;
 
         document.getElementById('id01').style.display='block';
