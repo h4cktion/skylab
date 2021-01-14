@@ -3,6 +3,7 @@ import axios from "axios";
 import App from './App.vue';
 import Vuex from 'vuex';
 import store from './store';
+import vuetify from './plugins/vuetify';
 
 
 Vue.use(axios);
@@ -11,5 +12,6 @@ Vue.config.productionTip = false
 
 new Vue({
   store,
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')

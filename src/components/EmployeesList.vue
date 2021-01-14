@@ -12,7 +12,7 @@
           Salaire
         </div>
         <div class="cell title">
-           <svg  v-on:click="addEmploye" class="icon green"><use xlink:href="../assets/icons.svg#icon-user-plus"/></svg>
+           <svg  v-on:click="addEmploye" class="icon icon-green"><use xlink:href="../assets/icons.svg#icon-user-plus"/></svg>
         </div>
       </div>
       <div class="row"  v-for="employe in employees" :key="employe.id">
@@ -27,7 +27,7 @@
         </div>
         <div class="cell actions">
           <svg  v-on:click="update(employe)" class="icon"><use xlink:href="../assets/icons.svg#icon-pencil"/></svg>
-          <svg v-on:click="remove(employe)" class="icon red" ><use xlink:href="../assets/icons.svg#icon-bin"/></svg>
+          <svg v-on:click="remove(employe)" class="icon icon-red" ><use xlink:href="../assets/icons.svg#icon-bin"/></svg>
         </div>
           
       </div>
@@ -116,10 +116,10 @@
    .icon:hover{
      cursor: pointer;
    }
-  .red{
+  .icon-red{
     fill :red;
   }
-  .green{
+  .icon-green{
     height: 1.3rem;
     width: 1.3rem;
     float: right;

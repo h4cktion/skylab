@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <EmployeesList />
-  </div>
+  <v-app>
+    <v-main>
+      <EmployeesList />
+    </v-main>
+  </v-app>
 </template>
 
 <script>

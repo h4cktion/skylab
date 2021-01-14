@@ -7,13 +7,28 @@
         <h2>{{title}}</h2>
       </header>
       <div class="w3-container">
-       <input type="text" id='name' :value="name"  @input="inputChange"/>
-       <input type="text" id='age' :value="age"  @input="inputChange"/>
-       <input type="text" id='salary' :value="salary"  @input="inputChange"/>
+        <v-text-field
+          label="Name"
+          hide-details="auto"
+          id='name' 
+          :value="name"  
+          @input="inputChange"
+        />
+        <v-text-field
+          label="Age"
+          hide-details="auto"
+          id='age' 
+          :value="age"  
+          @input="inputChange"
+        />
+        <v-text-field
+          label="Salaire"
+          hide-details="auto"
+          id='salary' 
+          :value="salary"  
+          @input="inputChange"
+        />
       </div>
-      {{name}},
-      {{age}},
-      {{salary}}
     </div>
   </div>
 </template>
