@@ -37,7 +37,7 @@ const actions = {
   },
 
   async deleteEmployee({commit}, employee){
-    //call API to delete employee
+    //TODO call API to delete employee
     commit('DELETE_EMPLOYE', employee.id);
   },
 
@@ -50,7 +50,7 @@ const actions = {
         })
         .catch(err => console.error(`error when we try to uptade employe:  ${err}`))
     }else{
-      //call API to add employee
+      //TODO call API to add employee
       employee.id = uuidv4();
       commit('ADD_EMPLOYE', employee);
     }
