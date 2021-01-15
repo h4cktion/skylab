@@ -11,25 +11,19 @@
           class="custom-input"
           label="Name"
           hide-details="auto"
-          id='name' 
-          :value="name"  
-          @input="inputChange"
+          v-model="employee.employee_name"
         />
         <v-text-field
           class="custom-input"
           label="Age"
           hide-details="auto"
-          id='age' 
-          :value="age"  
-          @input="inputChange"
+          v-model="employee.employee_age"
         />
         <v-text-field
           class="custom-input"
           label="Salaire"
           hide-details="auto"
-          id='salary' 
-          :value="salary"  
-          @input="inputChange"
+          v-model="employee.employee_salary"  
         />
       </div>
       <footer class="w3-container footer">
@@ -58,10 +52,12 @@
   export default {
     data : ()=>{
       return {
-
-          name : "",
-          age : 18,
-          salary : 1200
+          employee : {
+            id : null,
+            employee_name : "",
+            employee_age : null,
+            employee_salary : null,
+          }
         }
     },
      computed: {
@@ -72,22 +68,21 @@
       IdToUpdate: function(id) { 
         if(id !== null){
           let idEmployeToUpdate = this.employees.filter(e => e.id === id)[0];
-          this.name = idEmployeToUpdate.employee_name;
-          this.age = idEmployeToUpdate.employee_age;
-          this.salary = idEmployeToUpdate.employee_salary;
+          this.employee.id = this.IdToUpdate;
+          this.employee.employee_name = idEmployeToUpdate.employee_name;
+          this.employee.employee_age = idEmployeToUpdate.employee_age;
+          this.employee.employee_salary = idEmployeToUpdate.employee_salary;
         }else{
-          this.name = "";
-          this.age = 18;
-          this.salary = 1350;
+          this.employee.id = null;
+          this.employee.employee_name = "";
+          this.employee.employee_age = null;
+          this.employee.employee_salary = null;
         }
       }
     },
     methods: {
-      inputChange(event){
-        this[event.target.id] = event.target.value;
-      },
       save(){
-         console.log(`update or add employe`)
+         this.$store.dispatch('employees/updateEmployee',this.employee);
       },
       cancel(){
         document.getElementById('id01').style.display='none';

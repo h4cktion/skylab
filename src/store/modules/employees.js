@@ -14,7 +14,12 @@ const employees = {
     DELETE_EMPLOYE(state, employeeId){
       let employees = state.employees.filter( employee => employee.id != employeeId)
       state.employees = employees;
-    }
+    },
+    ADD_EMPLOYE(state, newEmployee){
+      let employees = [...state.employees];
+      employees.push(newEmployee);
+      state.employees = employees;
+    },
   },
   actions: {
     fetchEmployees ({commit}) {
@@ -55,7 +60,21 @@ const employees = {
     async deleteEmployee({commit}, employee){
       //call API to delete employee
       commit('DELETE_EMPLOYE', employee.id);
-    }
+    },
+
+    async updateEmployee({commit}, employee){
+      if(employee.id){
+        //call API to update employee
+        console.log("Update", employee)
+        
+        //commit('UPDATE_EMPLOYE', employee);
+      }else{
+        //call API to add employee
+        console.log("Add New employe", employee)
+        employee.id = 6;
+        commit('ADD_EMPLOYE', employee);
+      }
+    },
   
   },
 
