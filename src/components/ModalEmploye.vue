@@ -83,6 +83,7 @@
     methods: {
       save(){
          this.$store.dispatch('employees/updateEmployee',this.employee);
+         this.cancel();
       },
       cancel(){
         document.getElementById('id01').style.display='none';

@@ -1,4 +1,4 @@
-//import axios from 'axios';
+import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 const employees = {
@@ -12,7 +12,7 @@ const employees = {
     },
 
     DELETE_EMPLOYE(state, employeeId){
-      let employees = state.employees.filter( employee => employee.id != employeeId)
+      let employees = [...state.employees.filter( employee => employee.id != employeeId)];
       state.employees = employees;
     },
     ADD_EMPLOYE(state, newEmployee){
@@ -20,12 +20,19 @@ const employees = {
       employees.push(newEmployee);
       state.employees = employees;
     },
+    UPDATE_EMPLOYEE(state, employeeUpdated){
+      let employees = [...state.employees];
+      const index = employees.findIndex( e => e.id === employeeUpdated.id); 
+      employees[index] = employeeUpdated;
+
+      state.employees = employees; 
+    },
   },
   actions: {
     fetchEmployees ({commit}) {
       
       // Initialisation des data pour dev, parce que l'api me disait souvent que je faisait trop d'appel.
-      const data = [ { 
+/*       const data = [ { 
         id:0,
         employee_name: "Tiger Nixon",
         employee_age: 61,
@@ -46,15 +53,15 @@ const employees = {
         employee_age: 22,
         employee_salary: 433060 }
       ];
-      commit('FETCH_EMPLOYEES', data)
+      commit('FETCH_EMPLOYEES', data) */
      
-      /*  axios
-        .get('http://dummy.restapiexample.com/api/v1/employees')
+       axios
+        .get('http://localhost:8080/api/v1/employees')
         .then(res => {
           console.log(res.data.data)
           commit('FETCH_EMPLOYEES', res.data.data)
         })
-        .catch(err => console.error(`error when we try to fetch data:  ${err}`)) */
+        .catch(err => console.error(`error when we try to fetch data:  ${err}`))
     },
 
     async deleteEmployee({commit}, employee){
@@ -64,13 +71,14 @@ const employees = {
 
     async updateEmployee({commit}, employee){
       if(employee.id){
-        //call API to update employee
-        console.log("Update", employee)
-        
-        //commit('UPDATE_EMPLOYE', employee);
+        axios
+          .put(`http://localhost:8080/api/v1/update/${employee.id}`, employee)
+          .then(res => {
+            commit('UPDATE_EMPLOYEE', res.data.data)
+          })
+          .catch(err => console.error(`error when we try to uptade employe:  ${err}`))
       }else{
         //call API to add employee
-        console.log("Add New employe", employee)
         employee.id = uuidv4();
         commit('ADD_EMPLOYE', employee);
       }
