@@ -1,5 +1,5 @@
 //import axios from 'axios';
-
+import { v4 as uuidv4 } from 'uuid';
 
 const employees = {
   namespaced : true,
@@ -71,7 +71,7 @@ const employees = {
       }else{
         //call API to add employee
         console.log("Add New employe", employee)
-        employee.id = 6;
+        employee.id = uuidv4();
         commit('ADD_EMPLOYE', employee);
       }
     },
