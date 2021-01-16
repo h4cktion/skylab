@@ -1,15 +1,22 @@
 <template>
   <v-app>
-    <v-main>
-      <router-view></router-view>
-    </v-main>
+    <div  class="container">
+      <NAV />
+      <v-main>
+        <router-view></router-view>
+      </v-main>
+    </div>
   </v-app>
 </template>
 
 <script>
+  import NAV from './components/nav.vue';
 
 export default {
   name: 'App',
+  components: {
+    NAV
+  },
 }
 </script>
 
@@ -20,6 +27,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.container{
+  display: flex
 }
 </style>
