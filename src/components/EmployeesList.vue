@@ -1,31 +1,31 @@
 <template>
   <div class="w3-container">
-    <div class="table">
-      <div class="row"  >
-        <div class="cell title">
+    <div class="custom-table">
+      <div class="custom-row"  >
+        <div class="custom-cell title">
           Name
         </div>
-        <div class="cell title">
+        <div class="custom-cell title">
           Age
         </div>
-        <div class="cell title">
+        <div class="custom-cell title">
           Salaire
         </div>
-        <div class="cell title">
+        <div class="custom-cell title">
            <svg  v-on:click="addEmploye" class="icon icon-green"><use xlink:href="../assets/icons.svg#icon-user-plus"/></svg>
         </div>
       </div>
-      <div class="row"  v-for="employe in employees" :key="employe.id">
-        <div class="cell">
+      <div class="custom-row"  v-for="employe in employees" :key="employe.id">
+        <div class="custom-cell">
           {{ employe.employee_name }}
         </div>
-        <div class="cell">
+        <div class="custom-cell">
           {{ employe.employee_age }}
         </div>
-        <div class="cell">
+        <div class="custom-cell">
           {{ employe.employee_salary }} €
         </div>
-        <div class="cell actions">
+        <div class="custom-cell actions">
           <svg  v-on:click="update(employe)" class="icon"><use xlink:href="../assets/icons.svg#icon-pencil"/></svg>
           <svg v-on:click="remove(employe)" class="icon icon-red" ><use xlink:href="../assets/icons.svg#icon-bin"/></svg>
         </div>
@@ -78,23 +78,23 @@
 
 <style scoped>
 
-  .table{
+  .custom-table{
     font-size: 1.2rem;
     width: 50vw;
     margin: 0 auto;
     border:1px solid #EEEEEE;
   }
-  .row{
+  .custom-row{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: #EEEEEE;
   }
-  .row:nth-of-type(odd) {
+  .custom-row:nth-of-type(odd) {
 		background:white;
 	}
 
-  .cell{
+  .custom-cell{
     width: 100%;
     padding:1.1rem 0;
   }
