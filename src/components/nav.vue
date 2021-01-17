@@ -1,6 +1,6 @@
 <template>
-  <div class="left-menu">
-      <div >
+  <div class="left-menu ">
+      <div class="hidden-sm-and-down">
       <v-navigation-drawer
         permanent
         expand-on-hover
@@ -24,8 +24,8 @@
               </v-list-item-title>
               <v-list-item-subtitle>matthieu.wandolski@gmail.com</v-list-item-subtitle>
             </v-list-item-content>
-            <v-list-item-content v-if="mini">
-              <v-list-item-title class="title ">
+            <v-list-item-content v-if="mini"  v-bind:style="{ marginLeft : '-5px' }">
+              <v-list-item-title class="title">
                 WM
               </v-list-item-title>
             </v-list-item-content>
