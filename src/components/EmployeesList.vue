@@ -1,6 +1,6 @@
 <template>
   <div class="w3-container">
-    <div class="custom-table">
+    <div class="custom-table" v-if="!loading">
       <div class="custom-row"  >
         <div class="custom-cell title">
           Name
@@ -32,6 +32,13 @@
           
       </div>
     </div>
+    <v-overlay :value="overlay"  v-if="loading">
+     <v-progress-circular
+      indeterminate
+      color="white"
+    ></v-progress-circular>
+
+    </v-overlay>
     <ModalEmploye v-bind:title="modalTitle" v-bind:IdToUpdate="idEmployeToUpdate"/>
   </div>
 </template>
@@ -43,7 +50,8 @@
     data: ()=>{
       return {
         modalTitle : "",
-        idEmployeToUpdate : null
+        idEmployeToUpdate : null,
+        loading: true
       }
     },
     components: {
@@ -53,7 +61,13 @@
       ...mapState('employees', ['employees'] )
     },
     created(){
+      console.log("employees : ", this.employees.length)
       this.$store.dispatch('employees/fetchEmployees')
+    },
+     watch: {
+      employees () {
+       this.employees.length !== 0 ? this.loading = false : this.loading = true;
+      },
     },
     methods: {
       remove(employe){
