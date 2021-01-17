@@ -1,6 +1,6 @@
 <template>
-  <div class="left-menu ">
-      <div class="hidden-sm-and-down">
+<div>
+  <div class="left-menu hidden-sm-and-down" >
       <v-navigation-drawer
         permanent
         expand-on-hover
@@ -58,17 +58,63 @@
 
         </v-list>
       </v-navigation-drawer>
-      </div>
-  </div>
+    </div>
+
+  <div class="mobil-nav">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="menu-icon"></v-app-bar-nav-icon>
+
+      <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+        <router-link to="/">
+            <v-list-item>
+               <v-list-item-icon>
+                <v-icon>mdi-home</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Dashboard</v-list-item-title>
+            </v-list-item>
+         </router-link>
+        <router-link to="/employees">
+          <v-list-item>
+            <v-list-item-icon>
+                <v-icon>mdi-account-multiple</v-icon>
+              </v-list-item-icon>
+            <v-list-item-title>Collaborateurs</v-list-item-title>
+          </v-list-item>
+        </router-link>
+
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+</div>
+</div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      mini:true
+      mini:true,
+      drawer: false,
+      group: null,
     };
   },
+  watch: {
+      group () {
+        this.drawer = false
+      },
+    },
 
 }
 </script>
@@ -82,5 +128,17 @@ a{
   text-decoration: none;
   color:white !important;
 }
+.mobil-nav{
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+}
+
+.menu-icon{
+  position: fixed !important;
+  right: 2% !important;
+}
+
 
 </style>
