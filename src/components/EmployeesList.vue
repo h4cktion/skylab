@@ -32,7 +32,7 @@
           
       </div>
     </div>
-    <v-overlay :value="overlay"  v-if="loading">
+    <v-overlay  v-if="loading">
      <v-progress-circular
       indeterminate
       color="white"
@@ -61,7 +61,6 @@
       ...mapState('employees', ['employees'] )
     },
     created(){
-      console.log("employees : ", this.employees.length)
       this.$store.dispatch('employees/fetchEmployees')
     },
      watch: {
@@ -139,4 +138,12 @@
     float: right;
     fill :rgb(160, 229, 197);;
   }
+
+  @media screen and (max-width: 900px) {
+    .custom-table{
+      font-size: 1rem;
+      width: 80vw;
+  }
+}
+ 
 </style>
