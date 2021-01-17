@@ -5,6 +5,9 @@ import Vuex from 'vuex';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import routes from './routes';
+import AOS from 'aos';
+import "aos/dist/aos.css";
+
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -18,6 +21,12 @@ const router = new VueRouter({
 });
 
 new Vue({
+  created(){
+    AOS.init({
+      offset: 400, // offset (in px) from the original trigger point
+      duration: 1000, // values from 0 to 3000, with step 50ms
+    });
+  },
   store,
   vuetify,
   router,
