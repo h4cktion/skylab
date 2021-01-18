@@ -2,6 +2,7 @@
   <v-app>
     <div  class="container">
       <NAV />
+      <NOTIF class="hidden-sm-and-down"/>
       <v-main>
         <router-view></router-view>
       </v-main>
@@ -11,11 +12,13 @@
 
 <script>
   import NAV from './components/nav.vue';
+  import NOTIF from './components/notification.vue';
 
 export default {
   name: 'App',
   components: {
-    NAV
+    NAV,
+    NOTIF
   },
 }
 </script>

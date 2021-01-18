@@ -1,6 +1,5 @@
 <template>
   <v-card
-    :loading="loading"
     class="mx-auto my-12"
     max-width="374"
   >
@@ -79,7 +78,16 @@
 
 <script>
 export default {
-
+  data(){
+    return {
+      selection : null
+    }
+  },
+ methods:{
+    reserve(){
+      console.log("reserve")
+    }
+  }
 }
 </script>
 
