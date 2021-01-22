@@ -55,6 +55,14 @@
               <v-list-item-title>Collaborateurs</v-list-item-title>
             </v-list-item>
           </router-link>
+          <router-link to="/settings">
+            <v-list-item link>
+              <v-list-item-icon>
+                <v-icon>mdi-cog</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Paramètres</v-list-item-title>
+            </v-list-item>
+          </router-link>
 
         </v-list>
       </v-navigation-drawer>
@@ -91,6 +99,14 @@
                 <v-icon>mdi-account-multiple</v-icon>
               </v-list-item-icon>
             <v-list-item-title>Collaborateurs</v-list-item-title>
+          </v-list-item>
+        </router-link>
+        <router-link to="/settings">
+          <v-list-item>
+            <v-list-item-icon>
+                <v-icon>mdi-cog</v-icon>
+              </v-list-item-icon>
+            <v-list-item-title>Paramètres</v-list-item-title>
           </v-list-item>
         </router-link>
 
