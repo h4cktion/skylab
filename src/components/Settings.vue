@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Settings</h1>
+    <h1>{{$t('settings')}}</h1>
       <v-data-table
         :headers="headers"
         :items="users"
