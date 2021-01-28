@@ -65,6 +65,7 @@
           </router-link>
 
         </v-list>
+      <Language-switcher />
       </v-navigation-drawer>
     </div>
 
@@ -118,7 +119,11 @@
 </template>
 
 <script>
+import LanguageSwitcher from './languageSwitcher.vue';
 export default {
+  components:{
+    LanguageSwitcher
+  },
   data() {
     return {
       mini:true,
