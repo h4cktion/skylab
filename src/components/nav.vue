@@ -52,7 +52,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-account-multiple</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Collaborateurs</v-list-item-title>
+              <v-list-item-title>{{$t('leftMenu.employees')}}</v-list-item-title>
             </v-list-item>
           </router-link>
           <router-link to="/settings">
@@ -60,7 +60,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-cog</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Paramètres</v-list-item-title>
+              <v-list-item-title>{{$t('leftMenu.settings')}}</v-list-item-title>
             </v-list-item>
           </router-link>
 

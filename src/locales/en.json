@@ -1,3 +1,14 @@
 {
-  "settings": "Settings"
+  "dashboard": {
+    "title" : "Welcome to my Vue test project."
+  },
+  "settings": {
+    "title" :"Settings",
+    "lastName" : "Last name",
+    "firstName" :"First name"
+  },
+  "leftMenu" : {
+    "employees" : "Employees",
+    "settings" : "Settings"
+  }
 }

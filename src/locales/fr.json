@@ -1,3 +1,14 @@
 {
-  "settings": "Paramètres"
+  "dashboard": {
+    "title" : "Bienvenue à mon projet test Vue."
+  },
+  "settings": {
+    "title" : "Paramètres",
+    "lastName" : "Nom",
+    "firstName" :"Prénom"
+  },
+  "leftMenu" : {
+    "employees" : "Collaborateurs",
+    "settings" : "Paramètres"
+  }
 }

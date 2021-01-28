@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1>{{$t('settings')}}</h1>
+    <h1>{{$t('settings.title')}}</h1>
       <v-data-table
         :headers="headers"
         :items="users"
         :items-per-page="5"
-        class="elevation-1"
+        class="elevation-1 talbeSize"
       >
       <template v-slot:[`item.isAdmin`]="{ item }">
         {{ getValue(item.isAdmin) }}
@@ -65,4 +65,8 @@ export default {
 </script>
 
 <style>
+.talbeSize{
+  width: 75%;
+  margin: 0 auto;
+}
 </style>
